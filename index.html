@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050814">
+  <meta name="description" content="Nexus AI — a bilingual AI chat workspace.">
+  <title>Nexus AI — Intelligent Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar glass">
+      <a class="brand" href="/" aria-label="Nexus AI home">
+        <span class="brand-icon" aria-hidden="true">✧</span>
+        <span><strong>NEXUS AI</strong><small data-i18n="tagline">Next-generation assistant</small></span>
+      </a>
+      <div class="top-actions">
+        <span id="connectionStatus" class="status-pill"><i></i><span data-i18n="checking">Checking…</span></span>
+        <select id="languageSelect" aria-label="Language">
+          <option value="auto">Auto language</option>
+          <option value="en">English UI</option>
+          <option value="ur">اردو UI</option>
+        </select>
+        <button id="newChatBtn" class="button secondary" type="button">＋ <span data-i18n="newChat">New chat</span></button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar glass" id="sidebar">
+        <div class="sidebar-heading"><span data-i18n="history">CHAT HISTORY</span><button id="clearHistoryBtn" class="icon-button" title="Clear all history" aria-label="Clear all history">⌫</button></div>
+        <button id="sidebarNewChat" class="new-chat-wide" type="button">＋ <span data-i18n="startChat">Start a new chat</span></button>
+        <div id="chatList" class="chat-list"></div>
+        <div class="sidebar-note"><span class="pulse"></span><span data-i18n="localHistory">History is saved in this browser</span></div>
+      </aside>
+
+      <main class="chat-panel glass">
+        <div class="chat-toolbar">
+          <div><div class="eyebrow" data-i18n="workspace">YOUR WORKSPACE</div><h1 data-i18n="assistant">Nexus Assistant</h1></div>
+          <button id="mobileHistoryBtn" class="button secondary mobile-only" type="button">☰ <span data-i18n="history">History</span></button>
+        </div>
+        <section id="messages" class="messages" aria-live="polite" aria-label="Conversation">
+          <div id="welcome" class="welcome">
+            <div class="welcome-symbol">✧</div>
+            <p class="eyebrow" data-i18n="welcomeEyebrow">A LITTLE MORE INTELLIGENCE</p>
+            <h2 data-i18n="welcomeTitle">What can we explore today?</h2>
+            <p class="welcome-copy" data-i18n="welcomeCopy">Ask a question, upload a document, or start with an idea.</p>
+            <div class="suggestions">
+              <button class="suggestion" data-prompt="Explain a difficult topic simply, with an example."><span>◈</span><span data-i18n="suggest1">Explain a difficult topic</span><b>↗</b></button>
+              <button class="suggestion" data-prompt="Help me write a polished YouTube video script."><span>▤</span><span data-i18n="suggest2">Write a YouTube script</span><b>↗</b></button>
+              <button class="suggestion" data-prompt="Help me understand and summarize an uploaded file."><span>⌁</span><span data-i18n="suggest3">Understand a document</span><b>↗</b></button>
+              <button class="suggestion" data-prompt="Teach me something surprising about history."><span>✳</span><span data-i18n="suggest4">Discover a history fact</span><b>↗</b></button>
+            </div>
+          </div>
+        </section>
+
+        <div id="attachmentTray" class="attachment-tray" hidden></div>
+        <form id="composer" class="composer">
+          <input id="fileInput" type="file" hidden multiple accept="image/png,image/jpeg,image/webp,image/gif,.txt,.md,.csv,.json,.pdf">
+          <div class="composer-tools">
+            <button id="attachBtn" class="tool-button" type="button" title="Attach images or documents" aria-label="Attach files">＋</button>
+            <textarea id="userInput" rows="1" placeholder="Message Nexus AI…" aria-label="Message Nexus AI"></textarea>
+            <button id="voiceBtn" class="tool-button" type="button" title="Voice input" aria-label="Voice input">♩</button>
+            <button id="sendBtn" class="send-button" type="submit" aria-label="Send message"><span data-i18n="send">Send</span><span>➤</span></button>
+          </div>
+          <div class="composer-footer"><span data-i18n="composerHint">Enter to send · Shift + Enter for a new line</span><span id="charCount">0 / 8000</span></div>
+        </form>
+        <p class="disclaimer" data-i18n="disclaimer">AI can make mistakes. Check important information.</p>
+      </main>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
